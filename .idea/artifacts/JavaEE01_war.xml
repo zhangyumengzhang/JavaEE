@@ -1,7 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="war" name="JavaEE01:war">
-    <output-path>$PROJECT_DIR$/target/artifacts/JavaEE01_war</output-path>
-    <root id="archive" name="JavaEE01_war.war">
+    <output-path>$PROJECT_DIR$/JavaEE01/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>JavaEE01</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="homework-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="JavaEE01:war exploded" />
     </root>
   </artifact>

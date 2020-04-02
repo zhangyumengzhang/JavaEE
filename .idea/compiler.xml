@@ -7,12 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JavaEE01" />
+        <module name="javaee-mvc" />
         <module name="JavaEE-02" />
         <module name="JavaEE-01" />
         <module name="core" />
         <module name="db" />
-        <module name="JavaEE02" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="JavaEE-mvc" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/javaee-mvc" />
     <file type="web" url="file://$PROJECT_DIR$/JavaEE01" />
   </component>
   <component name="MavenProjectsManager">
@@ -11,6 +12,11 @@
         <option value="$PROJECT_DIR$/JavaEE01/pom.xml" />
         <option value="$PROJECT_DIR$/JavaEE02/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/JavaEE-mvc/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
