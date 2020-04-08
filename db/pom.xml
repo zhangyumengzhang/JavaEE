@@ -13,10 +13,7 @@
 
     <packaging>jar</packaging>
     <dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>core</artifactId>
-        </dependency>
+
     </dependencies>
 
 

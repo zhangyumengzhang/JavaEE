@@ -12,7 +12,7 @@
         <module>db</module>
         <module>core</module>
         <module>JavaEE01</module>
-        <module>JavaEE-mvc</module>
+        <module>javaee-springIoc</module>
     </modules>
     <dependencyManagement>
         <dependencies>

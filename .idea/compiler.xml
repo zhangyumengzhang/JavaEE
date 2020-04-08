@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JavaEE01" />
-        <module name="javaee-mvc" />
+        <module name="javaee-springIoc" />
         <module name="JavaEE-02" />
         <module name="JavaEE-01" />
         <module name="core" />
@@ -15,7 +15,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="javaee-mvc" target="1.7" />
       <module name="JavaEE-mvc" target="1.5" />
+      <module name="javaee-springmvc" target="1.7" />
+      <module name="javaeespringmvc" target="1.5" />
+      <module name="test" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

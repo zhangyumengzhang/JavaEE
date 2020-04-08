@@ -3,7 +3,10 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/javaee-mvc" />
+    <file type="web" url="file://$PROJECT_DIR$/javaee-springIoc" />
+    <file type="web" url="file://$PROJECT_DIR$/javaee-springmvc" />
     <file type="web" url="file://$PROJECT_DIR$/JavaEE01" />
+    <file type="web" url="file://$PROJECT_DIR$/test" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -16,6 +19,8 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/JavaEE-mvc/pom.xml" />
+        <option value="$PROJECT_DIR$/javaee-springmvc/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
       </set>
     </option>
   </component>
