@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.example.controller"/>
+
+    <context:component-scan base-package="org.example.jdbc"/>
+    <context:component-scan base-package="org.example.dao"/>
+
+    <bean id="Homework" name="Homework" class="org.example.dao.Homework" scope="prototype"/>
+    <bean id="Student" name="Student" class="org.example.dao.Student" scope="prototype"/>
+    <bean id="StudentHomework" name="StudentHomework" class="org.example.dao.StudentHomework" scope="prototype" />
+    <bean id="Teacher" name="Teacher" class="org.example.dao.Teacher" scope="prototype"/>
+
+    <bean id="HomeworkJdbc" name="HomeworkJdbc" class="org.example.jdbc.HomeworkJdbc" scope="prototype"/>
+    <bean id="Login" name="Login" class="org.example.jdbc.LoginJdbc" scope="prototype"/>
+    <bean id="StudentHomeworkJdbc" name="StudentHomeworkJdbc" class="org.example.jdbc.StudentHomeworkJdbc" scope="prototype"/>
+    <bean id="UserJdbc" name="UserJdbc" class="org.example.jdbc.UserJdbc" scope="prototype"/>
+</beans>
