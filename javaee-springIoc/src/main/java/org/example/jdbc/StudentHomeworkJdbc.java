@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Configuration
 public class StudentHomeworkJdbc {
-    private static final Logger logger = LoggerFactory.getLogger(StudentHomeworkJdbc.class);
+
     //添加学生作业
     public static boolean addStudentHomework(StudentHomework sh) throws ClassNotFoundException {
 

@@ -6,32 +6,35 @@ import org.springframework.stereotype.Component;
 
 public class Teacher {
 
-        private int teacherId;
+    private int teacherId;
 
-        public String getPassword() {
-            return password;
-        }
+    private String password;
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
+    private String teacherName;
 
-        private String password;
-        public int getTeacherId() {
-            return teacherId;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public void setTeacherId(int teacherId) {
-            this.teacherId = teacherId;
-        }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-        public String getTeacherName() {
-            return teacherName;
-        }
 
-        public void setTeacherName(String studentName) {
-            this.teacherName = studentName;
-        }
+    public int getTeacherId() {
+        return teacherId;
+    }
 
-        private String teacherName;
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String studentName) {
+        this.teacherName = studentName;
+    }
+
 }

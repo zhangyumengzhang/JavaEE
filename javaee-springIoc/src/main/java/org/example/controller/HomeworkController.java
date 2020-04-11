@@ -75,6 +75,7 @@ public class HomeworkController {
             e.printStackTrace();
         }
     }
+
     @RequestMapping(value = "/sallHomework",method = RequestMethod.GET)
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");

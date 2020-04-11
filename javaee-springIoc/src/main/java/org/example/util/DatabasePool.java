@@ -1,4 +1,4 @@
-package org.example.jdbc;
+package org.example.util;
 
 
 import com.zaxxer.hikari.HikariConfig;

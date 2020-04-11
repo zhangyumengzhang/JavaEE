@@ -8,7 +8,9 @@ public class Homework {
     public Homework(){
 
     }
-private int homeworkId;
+    private int homeworkId;
+
+    private String homeworkTitle;
 
     public int getHomeworkId() {
         return homeworkId;
@@ -26,5 +28,5 @@ private int homeworkId;
         this.homeworkTitle = homeworkTitle;
     }
 
-    private String homeworkTitle;
+
 }

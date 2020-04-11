@@ -11,9 +11,10 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Configuration
 public class HomeworkJdbc {
-    private static final Logger logger = LoggerFactory.getLogger(HomeworkJdbc.class);
+
     //得到全部已发布的作业
     public static List<Homework> selectAllHomework() {
         Connection connection =jdbcutil.getConnection();

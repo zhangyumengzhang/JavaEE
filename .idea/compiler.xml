@@ -10,7 +10,7 @@
         <module name="javaee-springIoc" />
         <module name="javaee-springmvc" />
         <module name="db" />
-        <module name="homework" />
+        <module name="JavaEE01" />
       </profile>
     </annotationProcessing>
   </component>

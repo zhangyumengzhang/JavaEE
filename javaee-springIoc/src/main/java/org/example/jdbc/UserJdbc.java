@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Configuration
 public class UserJdbc {
-    private static final Logger logger = LoggerFactory.getLogger(UserJdbc.class);
+
     //获取所有学生信息
     public static List<Student> selectAllStudent() {
 

@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 @Configuration
 public class LoginJdbc {
-    private static final Logger logger = LoggerFactory.getLogger(LoginJdbc.class);
+
     public  static boolean slogin(Student s){
         Connection connection = jdbcutil.getConnection();
         String sqlString = "select * from student where student_id=?";

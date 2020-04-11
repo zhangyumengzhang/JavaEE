@@ -7,6 +7,10 @@ public class Student {
 
     private int studentId;
 
+    private String password;
+
+    private String studentName;
+
     public String getPassword() {
         return password;
     }
@@ -15,7 +19,7 @@ public class Student {
         this.password = password;
     }
 
-    private String password;
+
     public int getStudentId() {
         return studentId;
     }
@@ -32,5 +36,4 @@ public class Student {
         this.studentName = studentName;
     }
 
-    private String studentName;
 }
