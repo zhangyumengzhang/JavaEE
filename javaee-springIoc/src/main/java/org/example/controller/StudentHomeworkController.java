@@ -23,11 +23,10 @@ import java.util.List;
 @Controller
 public class StudentHomeworkController {
 
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @RequestMapping(value = "/allStudentHomework",method = RequestMethod.GET)
     public void allStudentHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         //HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
         StudentHomeworkJdbc StudentHomeworkJdbc=(StudentHomeworkJdbc)applicationContext.getBean("StudentHomeworkJdbc");
         List<StudentHomework> list = StudentHomeworkJdbc.selectAll();
@@ -38,8 +37,6 @@ public class StudentHomeworkController {
 
     @RequestMapping(value = "/submitallH")
     public void submitallHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
        //HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
         //将新的学生作业信息实体化
         StudentHomework newsHomework=(StudentHomework)applicationContext.getBean("StudentHomework");
@@ -70,7 +67,6 @@ public class StudentHomeworkController {
 
     @RequestMapping(value = "/submitHomework")
     public void submitHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         if(isfirst){
             Integer id= Integer.parseInt(req.getParameter("id"));
             req.setAttribute("id", id);

@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
+
 public class HomeworkJdbc {
 
     //得到全部已发布的作业

@@ -20,10 +20,10 @@ import java.io.IOException;
 
 @Controller
 public class loginController {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
     public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
         String userType = req.getParameter("type");
         int id = Integer.parseInt(req.getParameter("id"));
@@ -59,7 +59,6 @@ public class loginController {
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
         String userType = req.getParameter("type");
         int id = Integer.parseInt(req.getParameter("id"));

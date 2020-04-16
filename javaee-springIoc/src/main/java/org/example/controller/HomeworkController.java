@@ -19,10 +19,10 @@ import java.util.List;
 
 @Controller
 public class HomeworkController {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @RequestMapping(value = "/allHomework",method= RequestMethod.GET)
     public void allHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
 
@@ -33,7 +33,7 @@ public class HomeworkController {
 
     @RequestMapping(value = "/OneHomework",method = RequestMethod.GET)
     public void oneHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
         StudentHomeworkJdbc studentHomeworkJdbc=(StudentHomeworkJdbc)applicationContext.getBean("StudentHomeworkJdbc");
         int id= Integer.parseInt(req.getParameter("id"));
         List<StudentHomework> list = studentHomeworkJdbc.selectshomeworkbyid(id);
@@ -44,7 +44,6 @@ public class HomeworkController {
 
     @RequestMapping(value = "/publishHomework")
     public void publishHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         Homework newHomework = (Homework)applicationContext.getBean("Homework");
         //将新的作业信息实体化
         newHomework.setHomeworkId(Integer.parseInt(req.getParameter("homework_id")));
@@ -78,7 +77,6 @@ public class HomeworkController {
 
     @RequestMapping(value = "/sallHomework",method = RequestMethod.GET)
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
         List<Homework> list = homeworkJdbc.selectAllHomework();
         req.setAttribute("homeworklist", list);

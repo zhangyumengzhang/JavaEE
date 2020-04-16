@@ -3,7 +3,7 @@ package org.example.dao;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-@Configuration
+
 public class Teacher {
     public Teacher() {
 

@@ -23,11 +23,10 @@ import java.util.List;
 //@WebServlet("/allStudent")
 @Controller
 public class StudentController {
+    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     @RequestMapping(value = "/allStudent",method = RequestMethod.GET)
     public void allStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
         UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
 
         List<Student> list = userJdbc.selectAllStudent();
@@ -38,7 +37,6 @@ public class StudentController {
 
     @RequestMapping(value = "/addS", method=RequestMethod.GET)
     public void addStudent(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
         UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
 

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-@Configuration
+
 public class UserJdbc {
 
     //获取所有学生信息
