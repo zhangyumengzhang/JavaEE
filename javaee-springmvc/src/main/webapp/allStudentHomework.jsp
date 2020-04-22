@@ -1,5 +1,5 @@
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.dao.StudentHomework" %><%--
+<%@ page import="org.example.bean.StudentHomework" %><%--
   Created by IntelliJ IDEA.
   User: zym
   Date: 2020/3/10

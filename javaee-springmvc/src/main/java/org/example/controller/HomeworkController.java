@@ -1,11 +1,9 @@
 package org.example.controller;
 
-import org.example.dao.Homework;
-import org.example.dao.StudentHomework;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.example.bean.Homework;
+import org.example.bean.StudentHomework;
+import org.example.service.HomeworkJdbc;
+import org.example.service.StudentHomeworkJdbc;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

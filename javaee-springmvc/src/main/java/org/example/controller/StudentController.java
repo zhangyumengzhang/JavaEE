@@ -1,19 +1,12 @@
 package org.example.controller;
 
-import org.example.dao.Homework;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
-import org.example.jdbc.UserJdbc;
-import org.example.dao.Student;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.example.service.UserJdbc;
+import org.example.bean.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

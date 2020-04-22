@@ -72,8 +72,8 @@
 
 
 
-    <context:component-scan base-package="org.example.dao"/>
-    <context:component-scan base-package="org.example.jdbc"/>
+    <context:component-scan base-package="org.example.bean"/>
+    <context:component-scan base-package="org.example.service"/>
     <context:component-scan base-package="org.example.controller"/>
     <context:component-scan base-package="org.example.util"/>
 

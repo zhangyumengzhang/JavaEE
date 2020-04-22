@@ -1,14 +1,11 @@
 package org.example.controller;
 
 
-import org.example.dao.Homework;
-import org.example.dao.Student;
-import org.example.dao.Teacher;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.LoginJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
-import org.example.jdbc.UserJdbc;
+import org.example.bean.Student;
+import org.example.bean.Teacher;
+import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +14,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
+@EnableAspectJAutoProxy
 @Controller
 public class loginController {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
 
     @RequestMapping(value = "login",method = RequestMethod.GET)
-    public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
+    public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
         String userType = req.getParameter("type");
         int id = Integer.parseInt(req.getParameter("id"));
         String password =req.getParameter("password");
@@ -34,9 +33,10 @@ public class loginController {
 
             teach.setTeacherId(id);
             teach.setPassword(password);
-            if(LoginJdbc.tlogin(teach)){
+            if(jdbcService.tlogin(teach)){
                 resp.getWriter().write("<script>alert('登陆成功！'); window.location='teachermenu.jsp'; window.close();</script>");
                 resp.getWriter().flush();
+                System.out.println("Before Service");
             }else{
                 resp.getWriter().write("<script>alert('用户名或密码错误，请检查后再登录!网页将跳转到登录界面！'); window.location='index.jsp'; window.close();</script>");
                 resp.getWriter().flush();
@@ -47,7 +47,7 @@ public class loginController {
 
             stud.setStudentId(id);
             stud.setPassword(password);
-            if(LoginJdbc.slogin(stud)){
+            if(jdbcService.slogin(stud)){
                 resp.getWriter().write("<script>alert('登陆成功！'); window.location='studentmenu.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             }else{
@@ -59,7 +59,6 @@ public class loginController {
 
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
         String userType = req.getParameter("type");
         int id = Integer.parseInt(req.getParameter("id"));
         String name=req.getParameter("name");
@@ -71,14 +70,14 @@ public class loginController {
             teach.setPassword(password);
             teach.setTeacherName(name);
             try {
-                if(userJdbc.addTeacher(teach)){
+                if(jdbcService.addTeacher(teach)){
                     resp.getWriter().write("<script>alert('注册成功！'); window.location='index.jsp'; window.close();</script>");
                     resp.getWriter().flush();
                 }else{
                     resp.getWriter().write("<script>alert('该用户已存在!网页将跳转到登录界面！'); window.location='index.jsp'; window.close();</script>");
                     resp.getWriter().flush();
                 }
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }else if(userType.equals("student")){
@@ -87,16 +86,18 @@ public class loginController {
             stud.setStudentName(name);
             stud.setPassword(password);
             try {
-                if(userJdbc.addStudent(stud)){
+                if(jdbcService.addStudent(stud)){
                     resp.getWriter().write("<script>alert('注册成功！'); window.location='index.jsp'; window.close();</script>");
                     resp.getWriter().flush();
                 }else{
                     resp.getWriter().write("<script>alert('该用户已存在!网页将跳转到登录界面！'); window.location='index.jsp'; window.close();</script>");
                     resp.getWriter().flush();
                 }
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }
     }
+
+
 }

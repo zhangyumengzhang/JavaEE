@@ -1,35 +1,32 @@
 package org.example.controller;
 
 
-import org.example.dao.Homework;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
-import org.example.dao.StudentHomework;
+import org.example.bean.StudentHomework;
+import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-//@WebServlet("/allStudentHomework")
+@EnableAspectJAutoProxy
 @Controller
 public class StudentHomeworkController {
 
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
 
     @RequestMapping(value = "/allStudentHomework",method = RequestMethod.GET)
-    public void allStudentHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
-        StudentHomeworkJdbc StudentHomeworkJdbc=(StudentHomeworkJdbc)applicationContext.getBean("StudentHomeworkJdbc");
-        List<StudentHomework> list = StudentHomeworkJdbc.selectAll();
+    public void allStudentHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        List<StudentHomework> list = jdbcService.selectAll();
 
         req.setAttribute("studentHomeworklist", list);
         req.getRequestDispatcher("allStudentHomework.jsp").forward(req, resp);
@@ -37,7 +34,6 @@ public class StudentHomeworkController {
 
     @RequestMapping(value = "/submitallH")
     public void submitallHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-       //HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
         //将新的学生作业信息实体化
         StudentHomework newsHomework=(StudentHomework)applicationContext.getBean("StudentHomework");
         //获取表单信息
@@ -49,7 +45,7 @@ public class StudentHomeworkController {
 
         resp.setContentType("text/html;charset=UTF-8");
         try {
-            if (StudentHomeworkJdbc.addStudentHomework(newsHomework)) {
+            if (jdbcService.addStudentHomework(newsHomework)) {
                 //显示弹窗并且当关闭弹窗后跳到指定页面
                 resp.getWriter().write("<script>alert('提交成功！网页将跳转到首页！'); window.location='studentmenu.jsp'; window.close();</script>");
                 resp.getWriter().flush();
@@ -58,7 +54,7 @@ public class StudentHomeworkController {
                 resp.getWriter().write("<script>alert('提交失败，请仔细检查后再提交！网页将跳转到提交界面！'); window.location='submitHomework.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             }
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -84,7 +80,7 @@ public class StudentHomeworkController {
 
         resp.setContentType("text/html;charset=UTF-8");
         try {
-            if (StudentHomeworkJdbc.addStudentHomework(newsHomework)) {
+            if (jdbcService.addStudentHomework(newsHomework)) {
                 //显示弹窗并且当关闭弹窗后跳到指定页面
                 resp.getWriter().write("<script>alert('提交成功！网页将跳转到首页！'); window.location='studentmenu.jsp'; window.close();</script>");
                 resp.getWriter().flush();
@@ -93,7 +89,7 @@ public class StudentHomeworkController {
                 resp.getWriter().write("<script>alert('提交失败，请仔细检查后再提交！网页将跳转到提交界面！'); window.location='submitHomework.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             }
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         isfirst=true;

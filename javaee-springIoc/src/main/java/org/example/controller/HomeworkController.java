@@ -1,10 +1,10 @@
 package org.example.controller;
 
-import org.example.dao.Homework;
-import org.example.dao.StudentHomework;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
+import org.example.bean.Homework;
+import org.example.bean.StudentHomework;
+import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,36 +14,34 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
-
+@EnableAspectJAutoProxy
 @Controller
 public class HomeworkController {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-
+    JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
     @RequestMapping(value = "/allHomework",method= RequestMethod.GET)
-    public void allHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void allHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException , SQLException {
 
-        HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
 
-        List<Homework> list = homeworkJdbc.selectAllHomework();
+
+        List<Homework> list = jdbcService.selectAllHomework();
         req.setAttribute("homeworklist", list);
         req.getRequestDispatcher("allHomework.jsp").forward(req, resp);
     }
 
     @RequestMapping(value = "/OneHomework",method = RequestMethod.GET)
-    public void oneHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-        StudentHomeworkJdbc studentHomeworkJdbc=(StudentHomeworkJdbc)applicationContext.getBean("StudentHomeworkJdbc");
-        int id= Integer.parseInt(req.getParameter("id"));
-        List<StudentHomework> list = studentHomeworkJdbc.selectshomeworkbyid(id);
+    public void oneHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {        int id= Integer.parseInt(req.getParameter("id"));
+        List<StudentHomework> list = jdbcService.selectshomeworkbyid(id);
 
         req.setAttribute("oneHomeworklist", list);
         req.getRequestDispatcher("OneHomework.jsp").forward(req, resp);
     }
 
     @RequestMapping(value = "/publishHomework")
-    public void publishHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public void publishHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException, SQLException {
         Homework newHomework = (Homework)applicationContext.getBean("Homework");
         //将新的作业信息实体化
         newHomework.setHomeworkId(Integer.parseInt(req.getParameter("homework_id")));
@@ -60,7 +58,7 @@ public class HomeworkController {
                 resp.getWriter().write("<script>alert('作业标题不得为空！网页将跳转到发布界面！'); window.location='publishHomework.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             } else {
-                if (HomeworkJdbc.addHomework(newHomework)) {
+                if (jdbcService.addHomework(newHomework)) {
                     //显示弹窗并且当关闭弹窗后跳到指定页面
                     resp.getWriter().write("<script>alert('发布成功！网页将跳转到首页！'); window.location='teachermenu.jsp'; window.close();</script>");
                     resp.getWriter().flush();
@@ -76,9 +74,8 @@ public class HomeworkController {
     }
 
     @RequestMapping(value = "/sallHomework",method = RequestMethod.GET)
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HomeworkJdbc homeworkJdbc = (HomeworkJdbc) applicationContext.getBean("HomeworkJdbc");
-        List<Homework> list = homeworkJdbc.selectAllHomework();
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException , SQLException{
+        List<Homework> list = jdbcService.selectAllHomework();
         req.setAttribute("homeworklist", list);
         req.getRequestDispatcher("sallHomework.jsp").forward(req, resp);
     }

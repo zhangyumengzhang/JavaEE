@@ -1,35 +1,32 @@
 package org.example.controller;
 
-import org.example.dao.Homework;
-import org.example.jdbc.HomeworkJdbc;
-import org.example.jdbc.StudentHomeworkJdbc;
-import org.example.jdbc.UserJdbc;
-import org.example.dao.Student;
+import org.example.bean.Student;
+import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 import java.util.List;
 
-//@WebServlet("/allStudent")
+@EnableAspectJAutoProxy
 @Controller
 public class StudentController {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
 
     @RequestMapping(value = "/allStudent",method = RequestMethod.GET)
-    public void allStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
+    public void allStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
-        List<Student> list = userJdbc.selectAllStudent();
+        List<Student> list = jdbcService.selectAllStudent();
 
         req.setAttribute("studentlist", list);
         req.getRequestDispatcher("allStudent.jsp").forward(req, resp);
@@ -37,8 +34,6 @@ public class StudentController {
 
     @RequestMapping(value = "/addS", method=RequestMethod.GET)
     public void addStudent(HttpServletRequest req, HttpServletResponse resp) throws UnsupportedEncodingException {
-
-        UserJdbc userJdbc = (UserJdbc) applicationContext.getBean("UserJdbc");
 
         int id=Integer.parseInt(req.getParameter("student_id"));
         //编码问题需要转换
@@ -57,7 +52,7 @@ public class StudentController {
                 resp.getWriter().write("<script>alert('姓名或密码不能为空，请检查后再添加!网页将跳转到添加界面！'); window.location='addStudent.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             } else {
-                if (userJdbc.addStudent(newStudent)) {
+                if (jdbcService.addStudent(newStudent)) {
 
                     //显示弹窗并且当关闭弹窗后跳到指定页面
                     resp.getWriter().write("<script>alert('添加成功！'); window.location='teachermenu.jsp'; window.close();</script>");
@@ -69,7 +64,7 @@ public class StudentController {
                     resp.getWriter().flush();
                 }
             }
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (ClassNotFoundException | IOException | SQLException e) {
             e.printStackTrace();
         }
     }
