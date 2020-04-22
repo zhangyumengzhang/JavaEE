@@ -24,9 +24,6 @@ public class HomeworkController {
     JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
     @RequestMapping(value = "/allHomework",method= RequestMethod.GET)
     public void allHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException , SQLException {
-
-
-
         List<Homework> list = jdbcService.selectAllHomework();
         req.setAttribute("homeworklist", list);
         req.getRequestDispatcher("allHomework.jsp").forward(req, resp);
@@ -35,7 +32,6 @@ public class HomeworkController {
     @RequestMapping(value = "/OneHomework",method = RequestMethod.GET)
     public void oneHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {        int id= Integer.parseInt(req.getParameter("id"));
         List<StudentHomework> list = jdbcService.selectshomeworkbyid(id);
-
         req.setAttribute("oneHomeworklist", list);
         req.getRequestDispatcher("OneHomework.jsp").forward(req, resp);
     }
@@ -48,7 +44,6 @@ public class HomeworkController {
         //编码问题，需要转换
         String str = new String(req.getParameter("homework_title").getBytes("iso-8859-1"), "UTF-8");
         newHomework.setHomeworkTitle(str);
-
         resp.setContentType("text/html;charset=UTF-8");
 
         try {

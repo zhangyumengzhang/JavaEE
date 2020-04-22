@@ -27,7 +27,6 @@ public class StudentHomeworkController {
     @RequestMapping(value = "/allStudentHomework",method = RequestMethod.GET)
     public void allStudentHomework(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         List<StudentHomework> list = jdbcService.selectAll();
-
         req.setAttribute("studentHomeworklist", list);
         req.getRequestDispatcher("allStudentHomework.jsp").forward(req, resp);
     }
@@ -60,7 +59,6 @@ public class StudentHomeworkController {
     }
 
     static boolean isfirst=true;
-
     @RequestMapping(value = "/submitHomework")
     public void submitHomework(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         if(isfirst){

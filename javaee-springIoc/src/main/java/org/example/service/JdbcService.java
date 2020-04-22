@@ -16,10 +16,11 @@ import java.util.List;
 
 @Service
 public class JdbcService {
-
-    public  void getid() {
+    //测试
+    public void getid() {
         System.out.println(10);
     }
+
     //得到全部已发布的作业
     public static List<Homework> selectAllHomework() throws SQLException {
         Connection connection = DatabasePool.getHikarDataSource().getConnection();
@@ -99,23 +100,24 @@ public class JdbcService {
         }
         return homework_title;
     }
-    public  static boolean slogin(Student s) throws SQLException {
+
+    public static boolean slogin(Student s) throws SQLException {
         Connection connection = DatabasePool.getHikarDataSource().getConnection();
         String sqlString = "select * from student where student_id=?";
         //建立连接
-        try  {
+        try {
             connection.setAutoCommit(false);//不自动commit
             PreparedStatement pst = connection.prepareStatement(sqlString);
             pst.setLong(1, s.getStudentId());
-            ResultSet resultSet=pst.executeQuery();
+            ResultSet resultSet = pst.executeQuery();
             connection.commit();
-            if (resultSet.next()){
-                if(s.getPassword().equals(resultSet.getString("password"))){
+            if (resultSet.next()) {
+                if (s.getPassword().equals(resultSet.getString("password"))) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
-            }else{
+            } else {
                 return false;
             }
 
@@ -274,6 +276,7 @@ public class JdbcService {
         }
         return list;
     }
+
     //获取所有学生信息
     public static List<Student> selectAllStudent() throws SQLException {
 
@@ -348,7 +351,7 @@ public class JdbcService {
         }
 
         //建立连接
-        try  {
+        try {
             connection.setAutoCommit(false);//不自动commit
             PreparedStatement pst = connection.prepareStatement(sqlString);
             pst.setLong(1, s.getStudentId());
@@ -385,7 +388,7 @@ public class JdbcService {
         }
 
         //建立连接
-        try  {
+        try {
             connection.setAutoCommit(false);//不自动commit
             PreparedStatement pst = connection.prepareStatement(sqlString);
             pst.setLong(1, t.getTeacherId());

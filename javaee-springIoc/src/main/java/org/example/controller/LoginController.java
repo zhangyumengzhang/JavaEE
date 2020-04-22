@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 @EnableAspectJAutoProxy
 @Controller
-public class loginController {
+public class LoginController {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
     JdbcService jdbcService = (JdbcService) applicationContext.getBean("JdbcService");
 
@@ -30,7 +30,6 @@ public class loginController {
         resp.setContentType("text/html;charset=UTF-8");
         if(userType.equals("teacher")){
             Teacher teach=(Teacher)applicationContext.getBean("Teacher");
-
             teach.setTeacherId(id);
             teach.setPassword(password);
             if(jdbcService.tlogin(teach)){
@@ -44,7 +43,6 @@ public class loginController {
         }else if(userType.equals("student")){
 
             Student stud=(Student)applicationContext.getBean("Student");
-
             stud.setStudentId(id);
             stud.setPassword(password);
             if(jdbcService.slogin(stud)){
@@ -98,6 +96,4 @@ public class loginController {
             }
         }
     }
-
-
 }

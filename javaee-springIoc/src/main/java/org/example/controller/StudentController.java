@@ -27,7 +27,6 @@ public class StudentController {
     public void allStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
 
         List<Student> list = jdbcService.selectAllStudent();
-
         req.setAttribute("studentlist", list);
         req.getRequestDispatcher("allStudent.jsp").forward(req, resp);
     }
