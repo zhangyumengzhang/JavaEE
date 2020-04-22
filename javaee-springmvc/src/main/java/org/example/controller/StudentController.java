@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import org.example.service.UserJdbc;
-import org.example.bean.Student;
+import org.example.model.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

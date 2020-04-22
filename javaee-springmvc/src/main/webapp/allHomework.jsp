@@ -1,6 +1,6 @@
 
 <%@ page import="java.util.List" %>
-<%@ page import="org.example.bean.Homework" %>
+<%@ page import="org.example.model.Homework" %>
 <%--
   Created by IntelliJ IDEA.
   User: zym

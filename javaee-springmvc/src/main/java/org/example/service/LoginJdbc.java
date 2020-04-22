@@ -1,7 +1,7 @@
 package org.example.service;
-import org.example.bean.Student;
-import org.example.bean.Teacher;
-import org.example.util.jdbcutil;
+import org.example.model.Student;
+import org.example.model.Teacher;
+import org.example.jdbc.jdbcutil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

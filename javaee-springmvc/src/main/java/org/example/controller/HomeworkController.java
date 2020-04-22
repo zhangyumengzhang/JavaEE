@@ -1,7 +1,7 @@
 package org.example.controller;
 
-import org.example.bean.Homework;
-import org.example.bean.StudentHomework;
+import org.example.model.Homework;
+import org.example.model.StudentHomework;
 import org.example.service.HomeworkJdbc;
 import org.example.service.StudentHomeworkJdbc;
 import org.springframework.stereotype.Controller;

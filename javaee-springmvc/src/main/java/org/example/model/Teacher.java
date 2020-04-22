@@ -1,4 +1,4 @@
-package org.example.bean;
+package org.example.model;
 
 
 public class Teacher {

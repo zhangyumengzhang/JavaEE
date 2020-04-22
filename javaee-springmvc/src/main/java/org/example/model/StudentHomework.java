@@ -1,9 +1,7 @@
-package org.example.bean;
+package org.example.model;
 
 public class StudentHomework {
-    public StudentHomework(){
 
-    }
     private int id;
 
     private int studentId;

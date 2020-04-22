@@ -1,6 +1,4 @@
-package org.example.bean;
-
-import org.springframework.stereotype.Component;
+package org.example.model;
 
 public class Teacher {
     public Teacher() {

@@ -1,7 +1,7 @@
 package org.example.service;
 
-import org.example.bean.Homework;
-import org.example.util.jdbcutil;
+import org.example.model.Homework;
+import org.example.jdbc.jdbcutil;
 
 import java.sql.*;
 import java.util.ArrayList;

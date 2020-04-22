@@ -13,12 +13,12 @@
     <context:component-scan base-package="org.example.controller"/>
 
     <context:component-scan base-package="org.example.service"/>
-    <context:component-scan base-package="org.example.bean"/>
+    <context:component-scan base-package="org.example.model"/>
 
-    <bean id="Homework" name="Homework" class="org.example.bean.Homework" scope="prototype"/>
-    <bean id="Student" name="Student" class="org.example.bean.Student" scope="prototype"/>
-    <bean id="StudentHomework" name="StudentHomework" class="org.example.bean.StudentHomework" scope="prototype" />
-    <bean id="Teacher" name="Teacher" class="org.example.bean.Teacher" scope="prototype"/>
+    <bean id="Homework" name="Homework" class="org.example.model.Homework" scope="prototype"/>
+    <bean id="Student" name="Student" class="org.example.model.Student" scope="prototype"/>
+    <bean id="StudentHomework" name="StudentHomework" class="org.example.model.StudentHomework" scope="prototype" />
+    <bean id="Teacher" name="Teacher" class="org.example.model.Teacher" scope="prototype"/>
 
     <bean id="HomeworkJdbc" name="HomeworkJdbc" class="org.example.service.HomeworkJdbc" scope="prototype"/>
     <bean id="Login" name="Login" class="org.example.service.LoginJdbc" scope="prototype"/>

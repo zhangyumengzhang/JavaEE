@@ -1,7 +1,7 @@
 package org.example.controller;
 
 
-import org.example.bean.StudentHomework;
+import org.example.model.StudentHomework;
 import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;

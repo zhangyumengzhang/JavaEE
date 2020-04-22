@@ -2,7 +2,7 @@ package org.example.controller;
 
 
 import org.example.service.StudentHomeworkJdbc;
-import org.example.bean.StudentHomework;
+import org.example.model.StudentHomework;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

@@ -1,8 +1,8 @@
 package org.example.controller;
 
 
-import org.example.bean.Student;
-import org.example.bean.Teacher;
+import org.example.model.Student;
+import org.example.model.Teacher;
 import org.example.service.LoginJdbc;
 import org.example.service.UserJdbc;
 import org.springframework.stereotype.Controller;

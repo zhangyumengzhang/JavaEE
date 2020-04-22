@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.bean.Student;
+import org.example.model.Student;
 import org.example.service.JdbcService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
