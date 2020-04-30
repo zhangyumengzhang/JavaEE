@@ -93,11 +93,13 @@ public class UserJdbc {
             pst.setString(3, s.getPassword());
             pst.execute();
             connection.commit();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
             connection.rollback();
+            return false;
         }
-        return true;
+        //return true;
     }
 
     //增加新的老师

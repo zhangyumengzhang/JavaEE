@@ -5,9 +5,12 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
+import java.sql.Connection;
+
 @Aspect
 @Component
 public class ServiceAspect {
+
 
     @Pointcut("execution(* org.example.service..*.*(..))")
     public void service(){}
@@ -25,7 +28,7 @@ public class ServiceAspect {
     }
 
    @Around("service()")
-   public Object aroundService(ProceedingJoinPoint joinPoint){
+   public Object aroundService(ProceedingJoinPoint joinPoint) throws Throwable {
         Object object=null;
         try{
             System.out.println("Before Around Service");
@@ -34,6 +37,6 @@ public class ServiceAspect {
         }catch(Throwable throwable){
             throwable.printStackTrace();
         }
-        return object;
+       return object;
     }
 }
