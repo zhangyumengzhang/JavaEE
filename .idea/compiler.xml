@@ -2,16 +2,31 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="core" />
+        <module name="JavaEE01" />
         <module name="javaee-springIoc" />
         <module name="javaee-springmvc" />
+        <module name="core" />
+        <module name="javaee-jpa" />
         <module name="db" />
-        <module name="JavaEE01" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Javaee-jpa" target="1.8" />
+      <module name="MyBatis" target="1.8" />
+      <module name="springboot-demo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Javaee-jpa" options="-parameters" />
+      <module name="MyBatis" options="-parameters" />
+      <module name="javaee-jpa" options="-parameters" />
+      <module name="springboot-demo" options="-parameters" />
+    </option>
   </component>
 </project>
