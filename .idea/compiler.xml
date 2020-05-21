@@ -13,6 +13,7 @@
         <module name="core" />
         <module name="javaee-jpa" />
         <module name="db" />
+        <module name="javaee-mybatis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -26,6 +27,7 @@
       <module name="Javaee-jpa" options="-parameters" />
       <module name="MyBatis" options="-parameters" />
       <module name="javaee-jpa" options="-parameters" />
+      <module name="javaee-mybatis" options="-parameters" />
       <module name="springboot-demo" options="-parameters" />
     </option>
   </component>
