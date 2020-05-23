@@ -14,7 +14,6 @@
         <option value="$PROJECT_DIR$/springboot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/MyBatis/pom.xml" />
         <option value="$PROJECT_DIR$/Javaee-jpa/pom.xml" />
-        <option value="$PROJECT_DIR$/javaee-mybatis/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
