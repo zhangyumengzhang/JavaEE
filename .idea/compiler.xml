@@ -11,12 +11,12 @@
         <module name="javaee-springIoc" />
         <module name="javaee-springmvc" />
         <module name="core" />
-        <module name="javaee-jpa" />
         <module name="db" />
         <module name="javaee-mybatis" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="javaee-jpa" target="1.8" />
       <module name="Javaee-jpa" target="1.8" />
       <module name="MyBatis" target="1.8" />
       <module name="springboot-demo" target="1.8" />

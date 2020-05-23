@@ -1,8 +1,10 @@
 package org.example.controller;
 
-import org.example.service.UserJdbc;
 import org.example.model.Student;
+import org.example.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -10,17 +12,27 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-//@WebServlet("/allStudent")
 @Controller
 public class StudentController {
+    @Autowired
+    private final StudentService studentService;
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+
+    }
+    @RequestMapping("home")
+    public String test(){
+        return "/index.jsp";
+    }
 
     @RequestMapping(value = "/allStudent",method = RequestMethod.GET)
     public void allStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<Student> list = UserJdbc.selectAllStudent();
+        List<Student> list = studentService.selectAllStudent();
 
         req.setAttribute("studentlist", list);
         req.getRequestDispatcher("allStudent.jsp").forward(req, resp);
@@ -33,19 +45,21 @@ public class StudentController {
         String str = new String(req.getParameter("student_name").getBytes("iso-8859-1"), "UTF-8");
         String password=req.getParameter("password");
         //从该界面获取到新的学生信息
-        Student newStudent=new Student();
-        newStudent.setStudentId(id);
-        newStudent.setStudentName(str);
-        newStudent.setPassword(password);
+        Student newStudent=Student.builder()
+                .student_id(id)
+                .password(password)
+                .student_name(str)
+                .build();
+
         resp.setContentType("text/html;charset=UTF-8");
 
         try {
-            if (newStudent.getStudentName().equals("")||newStudent.getPassword().isEmpty()) {
+            if (newStudent.getStudent_name().equals("")||newStudent.getPassword().isEmpty()) {
                 //显示弹窗并且当关闭弹窗后跳到指定页面
                 resp.getWriter().write("<script>alert('姓名或密码不能为空，请检查后再添加!网页将跳转到添加界面！'); window.location='addStudent.jsp'; window.close();</script>");
                 resp.getWriter().flush();
             } else {
-                if (UserJdbc.addStudent(newStudent)) {
+                if (studentService.addStudent(newStudent)) {
 
                     //显示弹窗并且当关闭弹窗后跳到指定页面
                     resp.getWriter().write("<script>alert('添加成功！'); window.location='teachermenu.jsp'; window.close();</script>");
@@ -57,7 +71,7 @@ public class StudentController {
                     resp.getWriter().flush();
                 }
             }
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

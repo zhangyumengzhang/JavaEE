@@ -1,66 +1,23 @@
 package org.example.model;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+@Builder
 public class StudentHomework {
-    public StudentHomework(){
 
-    }
     private int id;
 
-    private int studentId;
+    private int student_id;
 
-    private int homeworkId;
+    private int homework_id;
 
-    private String homeworkTitle;
+    private String homework_title;
 
-    private String homeworkContent;
+    private String homework_content;
 
-    private String updateTime;
+    private String update_time;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getHomeworkId() {
-        return homeworkId;
-    }
-
-    public void setHomeworkId(int homeworkId) {
-        this.homeworkId = homeworkId;
-    }
-
-    public String getHomeworkTitle() {
-        return homeworkTitle;
-    }
-
-    public void setHomeworkTitle(String homeworkTitle) {
-        this.homeworkTitle = homeworkTitle;
-    }
-
-    public String getHomeworkContent() {
-        return homeworkContent;
-    }
-
-    public void setHomeworkContent(String homeworkContent) {
-        this.homeworkContent = homeworkContent;
-    }
-
-    public String getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(String updateTime) {
-        this.updateTime = updateTime;
-    }
 }

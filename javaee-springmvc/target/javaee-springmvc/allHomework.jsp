@@ -38,11 +38,11 @@
             for (Homework sh : list) {
     %>
     <tr align="center" bgcolor="white" height="30">
-        <td><%=sh.getHomeworkId()%>
+        <td><%=sh.getHomework_id()%>
         </td>
-        <td><%=sh.getHomeworkTitle()%>
+        <td><%=sh.getHomework_title()%>
         </td>
-        <td> <input type="button" value="作业详情" onclick="jump(<%= sh.getHomeworkId()%>)">
+        <td> <input type="button" value="作业详情" onclick="jump(<%= sh.getHomework_id()%>)">
         </td>
     </tr>
     <%

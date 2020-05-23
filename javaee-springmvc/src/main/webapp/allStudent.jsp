@@ -29,9 +29,9 @@
             for (Student sh : list) {
     %>
     <tr align="center" bgcolor="white" height="30">
-        <td><%=sh.getStudentId()%>
+        <td><%=sh.getStudent_id()%>
         </td>
-        <td><%=sh.getStudentName()%>
+        <td><%=sh.getStudent_name()%>
         </td>
     </tr>
     <%

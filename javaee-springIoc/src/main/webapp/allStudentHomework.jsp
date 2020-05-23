@@ -34,11 +34,11 @@
     %>
     <tr align="center" bgcolor="white" height="30">
         <td><%=sh.getId()%></td>
-        <td><%=sh.getStudentId()%></td>
-        <td><%=sh.getHomeworkId()%></td>
-        <td><%=sh.getHomeworkTitle()%></td>
-        <td><%=sh.getHomeworkContent()%></td>
-        <td><%=sh.getUpdateTime()%></td>
+        <td><%=sh.getStudent_id()%></td>
+        <td><%=sh.getHomework_id()%></td>
+        <td><%=sh.getHomework_title()%></td>
+        <td><%=sh.getHomework_content()%></td>
+        <td><%=sh.getUpdate_time()%></td>
     </tr>
     <%
             }
